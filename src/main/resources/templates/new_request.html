@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Create New Request</title>
+</head>
+<body>
+	<div align="center">	
+		<h1>Create New Request</h1>
+		<br/>
+		<form action="#" th:action="@{/save}" th:object="${request}" method="post">
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Employment History:</td>
+				</tr>
+				
+				<!-- PREVIOUS COMPANY DETAILS 1 Details Starts -->
+				<tr>
+					<td>Previous Company Details-1:</td>
+				</tr>
+				<tr>
+					<td>Company Name:</td>
+					<td><input type="text" th:field="*{companyName1}" /></td>
+				</tr>
+				<tr>
+					<td>Date of Joining:</td>
+					<td><input type="text" th:field="*{doj1}" /></td>
+					<td>dd-mm-yyyy</td>
+				</tr>				
+				<tr>
+					<td>Last Working Day:</td>
+					<td><input type="text" th:field="*{lwd1}" /></td>
+					<td>dd-mm-yyyy</td>
+				</tr>
+				
+				<tr>
+					<td>Address:</td>
+					<td><textarea type="text" th:field="*{address1}" ></textarea></td>
+				</tr>
+				<!-- PREVIOUS COMPANY DETAILS 1 Details Ends -->
+				
+				<!-- PREVIOUS COMPANY DETAILS 2 Details Starts -->
+				<tr>
+					<td>Previous Company Details-2:</td>
+				</tr>
+				<tr>
+					<td>Company Name:</td>
+					<td><input type="text" th:field="*{companyName2}" /></td>
+				</tr>
+				<tr>
+					<td>Date of Joining:</td>
+					<td><input type="text" th:field="*{doj2}" /></td>
+					<td>dd-mm-yyyy</td>
+				</tr>				
+				<tr>
+					<td>Last Working Day:</td>
+					<td><input type="text" th:field="*{lwd2}" /></td>
+					<td>dd-mm-yyyy</td>
+				</tr>
+				<tr>
+					<td>Address:</td>
+					<td><textarea type="text" th:field="*{address2}" ></textarea></td>
+				</tr>
+				<!-- PREVIOUS COMPANY DETAILS 2 Details Ends -->
+				<tr>
+					<td>Educational Details:</td>
+				</tr>
+								
+				<tr>
+					<td>Highest Degree:</td>
+					<td><input type="text" th:field="*{highestDegree}" /></td>
+				</tr>
+				<tr>
+					<td>College/ University:</td>
+					<td><input type="text" th:field="*{college}" /></td>
+				</tr>				
+				<tr>
+					<td>Passed out year:</td>
+					<td><input type="text" th:field="*{year}" /></td>
+					<td>yyyy</td>
+				</tr>				
+				<tr>
+					<td colspan="4"><button type="submit">Save</button></td>
+					<td colspan="4"><a th:href="@{'/'}">Cancel</a></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

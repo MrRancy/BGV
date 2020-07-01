@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Request Manager</title>
+</head>
+<body>
+	<div align="center">
+		<div sec:authorize="isAuthenticated()">
+			Welcome <b><span sec:authentication="name">Username</span></b> &nbsp;
+			<i><span sec:authentication="principal.authorities">Roles</span></i>
+		</div>
+
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout" />
+		</form>
+
+		<h1>My Request</h1>
+		<div sec:authorize="hasAnyAuthority('USER')">
+			<a href="new">Create New Request</a>
+		</div>
+
+		<br /> <br />
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Request Number</th>
+					<th sec:authorize="hasAnyAuthority('ADMIN')">Employee ID</th>
+					<th sec:authorize="hasAnyAuthority('ADMIN')">Employee Name</th>
+					<th>Date Submitted</th>
+					<th>Status</th>
+					<th>Action</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="req : ${listRequests}">
+					<td th:text="${req.id}">Request Number</td>
+					<td th:text="${req.requestUser[0].username}"
+						sec:authorize="hasAnyAuthority('ADMIN')">Employee ID</td>
+					<td th:text="${req.requestUser[0].name}"
+						sec:authorize="hasAnyAuthority('ADMIN')">Employee Name</td>
+					<td th:text="${req.dateSubmitted}">Date Submitted</td>
+					<td th:text="${req.status}">Status</td>
+					<td sec:authorize="hasAnyAuthority('USER')"><a
+						th:href="@{'/edit/' + ${req.id}}">Edit</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td sec:authorize="hasAnyAuthority('ADMIN')"><a
+						th:href="@{'/edit/' + ${req.id}}">Update Status</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
