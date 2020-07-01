@@ -1,4 +1,20 @@
-Follow these Initial Steps to get your tables created and initial data fed.
+# Welcome to Background Verification Check!
+
+This Project was intentionally made for development and practice purpose only, anyone can go ahead and clone this project, modify, add new features.
+Forking is considered to be the best option. Please fork.
+> **Note** : Future enhancements for the updated UI and operations will be coming soon.
+
+## Required applications:
+
+-  Java v8 or above (this project was compiled on v13).
+-  Eclipse J2EE (Suggested because it comes with all the required internal dependencies. Please choose J2EE while installing eclipse)
+-  SQL Workbench v8.0 or above (this project was compiled on v8)
+    While installing SQL make sure your copy the **username** and **password** to a safe location, which we will be requiring later.
+- Any browser.
+
+#### 1. Open SQL Workbench and follow these Initial Steps to get your tables created and initial data fed.
+
+```
 
     `CREATE TABLE `users` (
     `user_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -63,5 +79,76 @@ Follow these Initial Steps to get your tables created and initial data fed.
     INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES (2, 1);
     INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES (3, 2);
 
+```
 
+Your can alternatively run the SQL Script to get everything done automatically.
 
+```
+    File is located in the root directory of this project named as SQL_Statements.sql
+```
+
+#### 2. Import the project in Eclipse as a Maven project
+
+```
+    File >> Import... >> Existing Maven Projects (You can get this option by searching maven)
+
+    Now in the Root Directory >> Click Browse... >> Select the location of the project where pom.xml is there (usually in the root location). >> Finish
+
+    After Successfull Import, wait for a couple of minutes for the project to automatically download all the required dependencies.
+```
+
+#### 3. Change DB configurations
+
+```
+    Follow this path to get the file location
+
+    BGV >> Java Resources >> src/java/resource >> application.properties
+
+    In this file change the following parameters to your MySQL Local Server
+    
+    for example;
+    spring.datasource.url=jdbc:mysql://localhost:3306/bgv
+    spring.datasource.username=root 
+    spring.datasource.password=Password!@#456
+```
+
+#### 4. Install Spring Boot Tool in Eclipse
+
+```
+    Go to Help >> Eclipse Marketplace >> Search
+
+    Next to Find, search for Spring Tools
+
+    You should be seeing Spring Tools 4 (aka Spring Tool Suite 4) 4.7.0.RELEASE
+
+    You will find install button, go ahead and complete the installation by accepting all the terms and conditions.
+
+    Now you will be having Spring boot installed in your Eclipse
+
+    ** Restart may be needed
+```
+
+#### 5. Run the Application
+
+```
+    Right click on the BGV Application >> Run As >> Spring Boot App
+
+    If no errors were found the app should be running successfully and you should see some output like this.
+
+    INFO 7160 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+    INFO 7160 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+    INFO 7160 --- [  restartedMain] com.wipro.BackgroundVerificationCheck    : Started BackgroundVerificationCheck in 2.729 seconds (JVM running for 3.399)
+```
+
+#### 6. Use these Credentials here after to test the application
+
+```
+    For Admin:
+        username:admin      password:wipro@123
+    For User:
+        username:123456     Passwrod:wipro@123
+        username:654321     Passwrod:wipro@123
+```
+
+Happy Developing,
+***MrRancy***
